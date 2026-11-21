@@ -12,11 +12,13 @@ import AboutPage from "./components/pages/about";
 import ProjectsPage from "./components/pages/projects";
 import ServicesPage from "./components/pages/services";
 import ContactPage from "./components/pages/contatct";
+import { projects } from "./data/data_config";
 
 function ProjectDetails() {
   const { slug } = useParams();
 
-  const project = projects.find((item) => item.slug === slug);
+  // Add type to item
+  const project = projects.find((item: any) => item.slug === slug);
 
   if (!project) {
     return <NotFound />;
@@ -31,12 +33,12 @@ function ProjectDetails() {
 
         <div className="project-detail-header">
           <span className="section-label">{project.category}</span>
-          <h1>{project.name}</h1>
+          <h1>{project.title}</h1>
           <p>{project.location}</p>
         </div>
 
         <div className="project-detail-image">
-          <img src={project.image} alt={project.name} />
+          <img src={project.image} alt={project.title} />
         </div>
 
         <div className="project-detail-description">

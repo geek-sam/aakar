@@ -1,5 +1,4 @@
 import GallerySection from "../sections/Common/GallerySection";
-import PartnersSection from "../sections/Common/PartnersSection";
 import TestimonialsSection from "../sections/Common/TestimonialsSection";
 import AboutSection from "../sections/Home/AboutSection";
 import BlogSection from "../sections/Home/BlogSection";
