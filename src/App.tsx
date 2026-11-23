@@ -13,6 +13,7 @@ import ProjectsPage from "./components/pages/projects";
 import ServicesPage from "./components/pages/services";
 import ContactPage from "./components/pages/contatct";
 import { projects } from "./data/data_config";
+import BlogDetails from "./components/pages/blogDetails";
 
 function ProjectDetails() {
   const { slug } = useParams();
@@ -74,10 +75,6 @@ function NotFound() {
   );
 }
 
-function BlogDetails() {
-  return <section></section>;
-}
-
 /* =========================================
    APP ROUTER
 ========================================= */
@@ -92,8 +89,8 @@ export default function App() {
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:slug" element={<ProjectDetails />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/blog" element={<Blogs />} />
-          <Route path="/blog/:slug" element={<BlogDetails />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:slug" element={<BlogDetails />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>

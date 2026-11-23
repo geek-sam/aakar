@@ -118,7 +118,7 @@ export default function Footer() {
       className="relative overflow-hidden bg-[var(--bg-dark)] text-white"
     >
       {/* Main Footer */}
-      <div className="mx-auto max-w-[1800px] px-5 pb-8 pt-20 sm:px-8 md:pt-28 lg:px-9 lg:pt-32">
+      <div className="mx-auto max-w-[1600px] px-5 pb-8 pt-20 sm:px-8 md:pt-28 lg:px-9 lg:pt-32">
         {/* Top CTA */}
         <div className="grid grid-cols-1 gap-8 border-b border-white/15 pb-16 md:pb-20 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
           <div data-footer-heading>

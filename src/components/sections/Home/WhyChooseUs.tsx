@@ -42,7 +42,7 @@ const advantages = [
 export default function WhyChooseUs() {
   return (
     <section className="relative overflow-hidden bg-[var(--bg-secondary)] py-24 md:py-32 lg:py-36">
-      <div className="mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-9">
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-9">
         {/* Section Header */}
         <div className="mb-14 flex flex-col justify-between gap-8 lg:mb-20 lg:flex-row lg:items-end">
           <div className="max-w-[760px]">

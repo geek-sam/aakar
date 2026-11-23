@@ -218,3 +218,126 @@ export const testimonials: Testimonial[] = [
     image: "/images/client-05.png",
   },
 ];
+
+interface BlogPost {
+  id: number;
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  author: string;
+  date: string;
+  readTime: string;
+  image: string;
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    id: 1,
+    slug: "functional-interior-design-trends",
+    title: "Functional Design Trends That Blend Style And Comfort",
+    excerpt:
+      "Discover how thoughtful furniture, intelligent layouts, and carefully selected materials can transform everyday spaces into beautiful living environments.",
+    category: "Design Trends",
+    author: "AAKAR Studio",
+    date: "November 18, 2026",
+    readTime: "5 min read",
+    image: "/images/blog-01.png",
+  },
+  {
+    id: 2,
+    slug: "innovative-interior-ideas",
+    title: "Innovative Interior Ideas To Refresh Your Living Space",
+    excerpt:
+      "Explore creative interior ideas, contemporary materials, and thoughtful details that bring a fresh perspective to your home.",
+    category: "Interior Design",
+    author: "AAKAR Studio",
+    date: "November 12, 2026",
+    readTime: "6 min read",
+    image: "/images/blog-02.png",
+  },
+  {
+    id: 3,
+    slug: "modern-home-interior-design",
+    title: "Transform Your Home With Modern Interior Design",
+    excerpt:
+      "From carefully selected furniture to beautiful lighting, discover the elements that create a harmonious and timeless home.",
+    category: "Inspiration",
+    author: "AAKAR Studio",
+    date: "November 08, 2026",
+    readTime: "4 min read",
+    image: "/images/blog-03.png",
+  },
+  {
+    id: 4,
+    slug: "choosing-interior-materials",
+    title: "A Guide To Choosing The Right Materials For Your Home",
+    excerpt:
+      "Understand how natural stone, wood, textures, and finishes influence the character and longevity of your interiors.",
+    category: "Materials",
+    author: "AAKAR Studio",
+    date: "October 28, 2026",
+    readTime: "7 min read",
+    image: "/images/blog-04.png",
+  },
+  {
+    id: 5,
+    slug: "lighting-in-interior-design",
+    title: "How Lighting Can Completely Transform Your Interiors",
+    excerpt:
+      "Learn how ambient lighting, accent lights, and natural illumination can create atmosphere and elevate architectural details.",
+    category: "Lighting",
+    author: "AAKAR Studio",
+    date: "October 20, 2026",
+    readTime: "5 min read",
+    image: "/images/blog-05.png",
+  },
+  {
+    id: 6,
+    slug: "minimalist-interior-design",
+    title: "The Beauty Of Minimalism: Less Clutter, More Character",
+    excerpt:
+      "Explore the principles of minimalist interiors and learn how simplicity can create more meaningful and functional spaces.",
+    category: "Design Trends",
+    author: "AAKAR Studio",
+    date: "October 14, 2026",
+    readTime: "6 min read",
+    image: "/images/blog-06.png",
+  },
+  {
+    id: 7,
+    slug: "indian-interior-design",
+    title: "Blending Traditional Indian Elements With Modern Living",
+    excerpt:
+      "Discover ways to incorporate Indian craftsmanship, cultural details, and contemporary aesthetics into modern homes.",
+    category: "Inspiration",
+    author: "AAKAR Studio",
+    date: "October 08, 2026",
+    readTime: "8 min read",
+    image: "/images/blog-07.png",
+  },
+  {
+    id: 8,
+    slug: "small-space-design",
+    title: "Smart Interior Solutions For Compact Urban Homes",
+    excerpt:
+      "Make every square foot count with multifunctional furniture, intelligent storage, and space-conscious design.",
+    category: "Interior Design",
+    author: "AAKAR Studio",
+    date: "September 28, 2026",
+    readTime: "5 min read",
+    image: "/images/blog-08.png",
+  },
+  {
+    id: 9,
+    slug: "wood-in-interior-design",
+    title: "The Timeless Appeal Of Natural Wood In Interior Spaces",
+    excerpt:
+      "Explore wood finishes, textures, and applications that introduce warmth and natural character into contemporary interiors.",
+    category: "Materials",
+    author: "AAKAR Studio",
+    date: "September 20, 2026",
+    readTime: "4 min read",
+    image: "/images/blog-09.png",
+  },
+];
