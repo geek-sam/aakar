@@ -96,7 +96,7 @@ export default function CoreValuesSection() {
 
         {/* Core Values Grid */}
         <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
-          {coreValues.map((value, index) => {
+          {coreValues.map((value) => {
             const Icon = value.icon;
 
             return (
