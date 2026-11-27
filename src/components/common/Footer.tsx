@@ -34,82 +34,81 @@ export default function Footer() {
 
   useLayoutEffect(() => {
     const footer = footerRef.current;
+
     if (!footer) return;
 
-    const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia();
+    let media: gsap.MatchMedia | null = null;
 
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // Main footer reveal
+    const context = gsap.context(() => {
+      media = gsap.matchMedia();
+
+      media.add("(prefers-reduced-motion: no-preference)", () => {
         const timeline = gsap.timeline({
           scrollTrigger: {
             trigger: footer,
-            start: "top 78%",
+            start: "top 85%",
             once: true,
+            invalidateOnRefresh: true,
           },
         });
 
-        timeline
-          .fromTo(
-            "[data-footer-heading]",
-            {
-              y: 45,
-              autoAlpha: 0,
-            },
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.9,
-              ease: "power3.out",
-            },
-          )
-          .fromTo(
-            "[data-footer-reveal]",
-            {
-              y: 35,
-              autoAlpha: 0,
-            },
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.75,
-              stagger: 0.12,
-              ease: "power3.out",
-            },
-            "-=0.45",
-          )
-          .fromTo(
-            "[data-footer-brand]",
-            {
-              yPercent: 45,
-              autoAlpha: 0,
-            },
-            {
-              yPercent: 0,
-              autoAlpha: 1,
-              duration: 1.2,
-              ease: "power4.out",
-            },
-            "-=0.35",
-          );
-
-        // Subtle parallax on the oversized wordmark
-        gsap.to("[data-footer-brand]", {
-          yPercent: -8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: footer,
-            start: "top bottom",
-            end: "bottom bottom",
-            scrub: 1,
+        // Heading reveal
+        timeline.fromTo(
+          "[data-footer-heading]",
+          {
+            y: 35,
+            autoAlpha: 0,
           },
-        });
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.8,
+            ease: "power3.out",
+          },
+        );
+
+        // Footer content reveal
+        timeline.fromTo(
+          "[data-footer-reveal]",
+          {
+            y: 25,
+            autoAlpha: 0,
+          },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: "power3.out",
+          },
+          "-=0.35",
+        );
+
+        // Wordmark reveal
+        timeline.fromTo(
+          "[data-footer-brand]",
+          {
+            yPercent: 12,
+            autoAlpha: 0,
+          },
+          {
+            yPercent: 0,
+            autoAlpha: 1,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "-=0.25",
+        );
       });
-
-      return () => mm.revert();
     }, footer);
 
-    return () => ctx.revert();
+    // Refresh after creating the footer triggers
+    ScrollTrigger.refresh();
+
+    return () => {
+      media?.revert();
+      context.revert();
+    };
   }, []);
 
   return (
@@ -264,7 +263,7 @@ export default function Footer() {
           <div className="overflow-hidden">
             <div
               data-footer-brand
-              className="select-none text-center font-heading text-[22vw] font-bold leading-[0.8] tracking-[-0.09em] text-white/[0.07] sm:text-[21vw] lg:text-[20vw]"
+              className="select-none text-center font-heading text-[22vw] font-bold leading-[0.8] tracking-[-0.09em] text-[var(--text-secondary)] sm:text-[21vw] lg:text-[20vw]"
             >
               AAKAR
             </div>

@@ -9,8 +9,8 @@ import {
   Clock,
 } from "lucide-react";
 
-import { projects, projectCategories } from "../../data/projectsData";
 import PageTitle from "../sections/Common/PageTitle";
+import { projectCategories, projects } from "../../data/data_config";
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All Projects");
@@ -149,7 +149,7 @@ export default function Projects() {
                 </div>
 
                 <Link
-                  to="/contact"
+                  to={`/projects/${featuredProject.slug}`}
                   className="group/btn inline-flex w-fit shrink-0 items-center gap-4 rounded-full bg-[var(--color-tertiary)] py-2 pl-6 pr-2 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:bg-white"
                 >
                   Discuss A Project
@@ -240,7 +240,7 @@ export default function Projects() {
 
                     {/* Hover Action */}
                     <Link
-                      to="/contact"
+                      to={`/projects/${project.slug}`}
                       aria-label={`Enquire about ${project.title}`}
                       className="absolute bottom-5 right-5 flex h-11 w-11 translate-y-3 items-center justify-center rounded-full bg-[var(--color-tertiary)] text-[var(--text-primary)] opacity-0 transition-all duration-300 hover:bg-white group-hover:translate-y-0 group-hover:opacity-100"
                     >

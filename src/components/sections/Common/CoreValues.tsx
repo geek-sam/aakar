@@ -49,10 +49,10 @@ export default function CoreValuesSection() {
 
       <div className="relative z-10 mx-auto max-w-[1800px] px-5 sm:px-8 lg:px-9">
         {/* Section Header */}
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_2.8fr] lg:gap-20">
           {/* Left Label */}
-          <div className="flex flex-col justify-between">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-col justify-between lg:border-r lg:border-[var(--border-primary)]">
+            <div className="flex h-fit items-center gap-3">
               <span className="h-px w-10 bg-[var(--color-primary)]" />
 
               <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
@@ -136,10 +136,6 @@ export default function CoreValuesSection() {
                   <div className="mt-8 flex items-center justify-between border-t border-[var(--border-primary)] pt-5">
                     <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
                       AAKAR Philosophy
-                    </span>
-
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--bg-secondary)] text-[var(--color-primary)] transition-all duration-300 group-hover:rotate-45 group-hover:bg-[var(--color-primary)] group-hover:text-white">
-                      <ArrowUpRight size={16} />
                     </span>
                   </div>
                 </div>

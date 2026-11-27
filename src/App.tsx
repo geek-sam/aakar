@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Homepage from "./components/pages";
 import Layout from "./Layout/Layout";
 import Blogs from "./components/pages/blogs";
@@ -12,49 +6,9 @@ import AboutPage from "./components/pages/about";
 import ProjectsPage from "./components/pages/projects";
 import ServicesPage from "./components/pages/services";
 import ContactPage from "./components/pages/contatct";
-import { projects } from "./data/data_config";
 import BlogDetails from "./components/pages/blogDetails";
-
-function ProjectDetails() {
-  const { slug } = useParams();
-
-  // Add type to item
-  const project = projects.find((item: any) => item.slug === slug);
-
-  if (!project) {
-    return <NotFound />;
-  }
-
-  return (
-    <section className="section project-details">
-      <div className="container">
-        <Link to="/projects" className="text-link">
-          ← Back to Projects
-        </Link>
-
-        <div className="project-detail-header">
-          <span className="section-label">{project.category}</span>
-          <h1>{project.title}</h1>
-          <p>{project.location}</p>
-        </div>
-
-        <div className="project-detail-image">
-          <img src={project.image} alt={project.title} />
-        </div>
-
-        <div className="project-detail-description">
-          <h2>A space designed with intention.</h2>
-          <p>
-            This project explores the relationship between materials, light,
-            functionality, and contemporary Indian living. Detailed project
-            information, design process, and additional photography can be added
-            here.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
+import ProjectDetails from "./components/pages/projectDetails";
+import ScrollManager from "./components/common/ScrollManager";
 
 /* =========================================
    404 PAGE
@@ -82,6 +36,8 @@ function NotFound() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollManager />
+
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Homepage />} />

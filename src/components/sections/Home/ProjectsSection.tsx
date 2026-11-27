@@ -111,10 +111,10 @@ export default function ProjectsSection() {
       />
 
       {/* Section Introduction */}
-      <div className="relative mx-auto mb-14 grid max-w-[1600px] grid-cols-1 gap-8 px-5 sm:px-8 md:mb-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12 lg:px-9">
+      <div className="relative mx-auto mb-14 grid max-w-[1600px] grid-cols-1 gap-8 px-5 sm:px-8 md:mb-16 lg:grid-cols-[0.8fr_2.2fr] lg:gap-12 lg:px-9">
         {/* Left Label */}
-        <div className="flex items-start">
-          <div className="flex items-center gap-2 rounded-full border border-[var(--border-primary)] px-4 py-2">
+        <div className="flex items-start lg:border-r lg:border-[var(--border-primary)]">
+          <div className="flex h-fit items-center gap-2 rounded-full border border-[var(--border-primary)] px-4 py-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" />
 
             <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)]">

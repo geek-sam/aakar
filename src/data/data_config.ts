@@ -95,72 +95,397 @@ export const processSteps: ProcessStep[] = [
   },
 ];
 
-interface Project {
+
+export interface Project {
   id: number;
   slug: string;
   title: string;
-  category: string;
+  category: "Residential" | "Commercial" | "Office" | "Renovation";
   location: string;
   year: string;
   image: string;
+  description: string;
+  area: string;
+  featured?: boolean;
+  style: string;
 }
+
+export const projectCategories = [
+  "All Projects",
+  "Residential",
+  "Commercial",
+  "Office",
+  "Renovation",
+];
 
 export const projects: Project[] = [
   {
     id: 1,
-    slug: "industrial-elegance-condo",
-    title: "Industrial Elegance Condo",
+    slug: "the-courtyard-residence",
+    title: "The Courtyard Residence",
     category: "Residential",
-    location: "Bhubaneswar, India",
+    location: "Bhubaneswar, Odisha",
     year: "2026",
     image: "/images/project-01.png",
+    description:
+      "A contemporary residence that brings natural materials, open spaces, and thoughtful detailing together.",
+    area: "3,200 sq. ft.",
+    featured: true,
+    style: "Contemporary",
   },
   {
     id: 2,
-    slug: "serene-space-studio",
-    title: "Serene Space Studio",
+    slug: "serene-living-apartment",
+    title: "Serene Living Apartment",
     category: "Residential",
-    location: "Cuttack, India",
+    location: "Cuttack, Odisha",
     year: "2026",
     image: "/images/project-02.png",
+    description:
+      "A warm and inviting apartment designed around comfort, simplicity, and everyday functionality.",
+    area: "1,850 sq. ft.",
+    style: "Modern Minimal",
   },
   {
     id: 3,
-    slug: "urban-zen-apartment",
-    title: "Urban Zen Apartment",
-    category: "Landscape",
-    location: "Puri, India",
+    slug: "the-urban-workspace",
+    title: "The Urban Workspace",
+    category: "Office",
+    location: "Bhubaneswar, Odisha",
     year: "2025",
     image: "/images/project-03.png",
+    description:
+      "A collaborative office environment combining contemporary aesthetics with purposeful work zones.",
+    area: "4,500 sq. ft.",
+    style: "Contemporary",
   },
   {
     id: 4,
-    slug: "art-deco-revival",
-    title: "Art Deco Revival",
-    category: "Single Home",
-    location: "Bhubaneswar, India",
+    slug: "the-artisan-cafe",
+    title: "The Artisan Café",
+    category: "Commercial",
+    location: "Puri, Odisha",
     year: "2025",
     image: "/images/project-04.png",
+    description:
+      "A hospitality space with warm textures, distinctive furniture, and an inviting atmosphere.",
+    area: "2,100 sq. ft.",
+    style: "Modern Rustic",
   },
   {
     id: 5,
-    slug: "golden-ratio-residence",
-    title: "Golden Ratio Residence",
-    category: "Single Home",
-    location: "Rourkela, India",
+    slug: "the-modern-villa",
+    title: "The Modern Villa",
+    category: "Residential",
+    location: "Bhubaneswar, Odisha",
     year: "2025",
     image: "/images/project-05.png",
+    description:
+      "A sophisticated family home balancing architectural character with refined interior detailing.",
+    area: "5,000 sq. ft.",
+    style: "Modern Luxury",
   },
   {
     id: 6,
-    slug: "nordic-living",
-    title: "Nordic Living",
-    category: "Luxury Interior",
-    location: "Bhubaneswar, India",
+    slug: "heritage-reimagined",
+    title: "Heritage Reimagined",
+    category: "Renovation",
+    location: "Puri, Odisha",
     year: "2025",
     image: "/images/project-06.png",
+    description:
+      "A thoughtful transformation that preserves existing character while introducing modern comfort.",
+    area: "2,700 sq. ft.",
+    style: "Contemporary Heritage",
   },
+  {
+    id: 7,
+    slug: "the-pavilion-office",
+    title: "The Pavilion Office",
+    category: "Office",
+    location: "Bhubaneswar, Odisha",
+    year: "2024",
+    image: "/images/project-07.png",
+    description:
+      "A refined professional environment with a focus on natural light, circulation, and materiality.",
+    area: "3,800 sq. ft.",
+    style: "Minimal Contemporary",
+  },
+  {
+    id: 8,
+    slug: "the-white-house",
+    title: "The White House",
+    category: "Residential",
+    location: "Cuttack, Odisha",
+    year: "2024",
+    image: "/images/project-08.png",
+    description:
+      "A light-filled home with understated elegance, balanced proportions, and carefully selected finishes.",
+    area: "2,400 sq. ft.",
+    style: "Modern Minimal",
+  },
+  // {
+  //   id: 9,
+  //   slug: "the-botanica-boutique",
+  //   title: "The Botanica Boutique",
+  //   category: "Commercial",
+  //   location: "Bhubaneswar, Odisha",
+  //   year: "2024",
+  //   image: "/images/project-09.png",
+  //   description:
+  //     "A contemporary boutique interior inspired by organic forms, natural textures, and an immersive retail experience.",
+  //   area: "1,600 sq. ft.",
+  //   style: "Organic Contemporary",
+  // },
+  // {
+  //   id: 10,
+  //   slug: "the-nest-residence",
+  //   title: "The Nest Residence",
+  //   category: "Residential",
+  //   location: "Rourkela, Odisha",
+  //   year: "2024",
+  //   image: "/images/project-10.png",
+  //   description:
+  //     "A thoughtfully planned family home that combines warm finishes, practical storage, and comfortable everyday spaces.",
+  //   area: "2,900 sq. ft.",
+  //   style: "Warm Contemporary",
+  // },
 ];
+
+export const getProjectBySlug = (slug: string) =>
+  projects.find((project) => project.slug === slug);
+
+export const getRelatedProjects = (
+  currentProject: Project,
+  limit = 3
+) =>
+  projects
+    .filter(
+      (project) =>
+        project.slug !== currentProject.slug &&
+        project.category === currentProject.category
+    )
+    .concat(
+      projects.filter(
+        (project) =>
+          project.slug !== currentProject.slug &&
+          project.category !== currentProject.category
+      )
+    )
+    .slice(0, limit);
+
+
+
+export interface ProjectDetail {
+  overview: string;
+  concept: string;
+  approach: string;
+  highlights: string[];
+  gallery: string[];
+}
+
+export const projectDetails: Record<string, ProjectDetail> = {
+  "the-courtyard-residence": {
+    overview:
+      "A contemporary residence that brings natural materials, open spaces, and thoughtful detailing together. The home is designed to create a seamless relationship between shared living areas and private spaces while maintaining a warm and welcoming atmosphere.",
+    concept:
+      "Inspired by the idea of bringing the outdoors into everyday living, the design explores natural textures, open spatial connections, and a restrained contemporary palette. The overall aesthetic balances architectural simplicity with warmth and character.",
+    approach:
+      "The planning focuses on openness, natural light, and comfortable circulation. Material selections, furniture arrangements, and lighting are carefully coordinated to create a cohesive interior that responds to the family's lifestyle.",
+    highlights: [
+      "Open and connected living spaces",
+      "Natural materials and warm finishes",
+      "Thoughtful indoor-outdoor relationship",
+      "Integrated storage and functional detailing",
+    ],
+    gallery: [
+      "/images/project-01-detail-01.jpg",
+      "/images/project-01-detail-02.jpg",
+      "/images/project-01-detail-03.jpg",
+    ],
+  },
+
+  "serene-living-apartment": {
+    overview:
+      "A warm and inviting apartment designed around comfort, simplicity, and everyday functionality. The interior creates a calm residential environment through balanced proportions, soft finishes, and practical design solutions.",
+    concept:
+      "The concept revolves around creating a peaceful retreat within an urban setting. Modern minimalism, subtle textures, and a warm neutral palette come together to establish a relaxed and timeless visual identity.",
+    approach:
+      "The design prioritises efficient space utilisation without compromising comfort. Furniture, lighting, and storage are thoughtfully arranged to maintain visual openness while making everyday activities convenient.",
+    highlights: [
+      "Warm and understated colour palette",
+      "Space-efficient furniture planning",
+      "Minimal and functional interiors",
+      "Layered lighting and subtle textures",
+    ],
+    gallery: [
+      "/images/project-02-detail-01.jpg",
+      "/images/project-02-detail-02.jpg",
+      "/images/project-02-detail-03.jpg",
+    ],
+  },
+
+  "the-urban-workspace": {
+    overview:
+      "A collaborative office environment combining contemporary aesthetics with purposeful work zones. The workspace is designed to support productivity, interaction, and employee comfort through a well-organised spatial layout.",
+    concept:
+      "The design explores the balance between professional identity and a welcoming workplace atmosphere. Clean architectural lines, contemporary materials, and carefully defined zones establish a cohesive environment.",
+    approach:
+      "The planning focuses on circulation, workstation organisation, and the relationship between individual and collaborative areas. Lighting, furniture, and material choices support the practical demands of a modern office.",
+    highlights: [
+      "Clearly defined work and collaboration zones",
+      "Efficient circulation and spatial planning",
+      "Contemporary material palette",
+      "Functional lighting and workstation design",
+    ],
+    gallery: [
+      "/images/project-03-detail-01.jpg",
+      "/images/project-03-detail-02.jpg",
+      "/images/project-03-detail-03.jpg",
+    ],
+  },
+
+  "the-artisan-cafe": {
+    overview:
+      "A hospitality space with warm textures, distinctive furniture, and an inviting atmosphere. The café is designed to create a memorable experience through its spatial character, material choices, and comfortable seating arrangements.",
+    concept:
+      "Drawing inspiration from modern rustic design, the concept combines natural textures, earthy tones, and contemporary detailing. The intention is to create a relaxed setting with a distinctive identity.",
+    approach:
+      "The layout considers customer movement, seating variety, and the relationship between service areas and dining spaces. Lighting and material combinations help establish an intimate and welcoming environment.",
+    highlights: [
+      "Warm and textured interior finishes",
+      "Distinctive furniture and seating",
+      "Comfortable dining arrangements",
+      "Atmospheric lighting and material detailing",
+    ],
+    gallery: [
+      "/images/project-04-detail-01.jpg",
+      "/images/project-04-detail-02.jpg",
+      "/images/project-04-detail-03.jpg",
+    ],
+  },
+
+  "the-modern-villa": {
+    overview:
+      "A sophisticated family home balancing architectural character with refined interior detailing. The residence combines generous spaces, carefully selected finishes, and functional design elements to create an elevated living experience.",
+    concept:
+      "The design explores modern luxury through material richness, elegant proportions, and a restrained yet expressive palette. Every space is intended to feel distinctive while maintaining a consistent design language throughout the home.",
+    approach:
+      "The project brings together spatial planning, custom furniture, lighting, and carefully selected materials. Particular attention is given to the relationship between formal living spaces and more intimate family areas.",
+    highlights: [
+      "Refined contemporary luxury aesthetic",
+      "Premium materials and finishes",
+      "Custom furniture and detailing",
+      "Balanced public and private spaces",
+    ],
+    gallery: [
+      "/images/project-05-detail-01.jpg",
+      "/images/project-05-detail-02.jpg",
+      "/images/project-05-detail-03.jpg",
+    ],
+  },
+
+  "heritage-reimagined": {
+    overview:
+      "A thoughtful transformation that preserves existing character while introducing modern comfort. The renovation brings renewed functionality to the property while respecting its original architectural identity.",
+    concept:
+      "The concept centres on the dialogue between old and new. Existing character and architectural details are complemented by contemporary interventions, creating an interior that feels both familiar and refreshed.",
+    approach:
+      "The design begins with understanding the existing structure and identifying opportunities for improvement. Updated layouts, finishes, and functional elements are introduced while retaining selected features that contribute to the property's identity.",
+    highlights: [
+      "Preservation of existing character",
+      "Updated finishes and materials",
+      "Improved spatial functionality",
+      "Contemporary details within a heritage setting",
+    ],
+    gallery: [
+      "/images/project-06-detail-01.jpg",
+      "/images/project-06-detail-02.jpg",
+      "/images/project-06-detail-03.jpg",
+    ],
+  },
+
+  "the-pavilion-office": {
+    overview:
+      "A refined professional environment with a focus on natural light, circulation, and materiality. The office is planned to create a comfortable and organised workplace while maintaining a clear and understated design identity.",
+    concept:
+      "Inspired by architectural simplicity, the design uses clean forms, balanced materials, and natural light to create a calm and productive atmosphere. The concept emphasises clarity, openness, and purposeful spatial organisation.",
+    approach:
+      "The layout is developed around efficient movement and well-defined work areas. Material selections and lighting are coordinated to maintain visual consistency while supporting different workplace activities.",
+    highlights: [
+      "Natural light and open spatial planning",
+      "Minimal contemporary design language",
+      "Efficient workstation organisation",
+      "Balanced material and lighting choices",
+    ],
+    gallery: [
+      "/images/project-07-detail-01.jpg",
+      "/images/project-07-detail-02.jpg",
+      "/images/project-07-detail-03.jpg",
+    ],
+  },
+
+  "the-white-house": {
+    overview:
+      "A light-filled home with understated elegance, balanced proportions, and carefully selected finishes. The interior creates a calm and welcoming atmosphere through simplicity, natural light, and thoughtful detailing.",
+    concept:
+      "The design is guided by modern minimalism, using light tones, clean lines, and subtle contrasts. Rather than relying on excessive decoration, the interior allows proportions, materials, and light to define its character.",
+    approach:
+      "The project focuses on maintaining visual continuity between rooms while ensuring that every area serves its intended purpose. Furniture, storage, and finishes are selected to support a clutter-free and comfortable lifestyle.",
+    highlights: [
+      "Light-filled and open interiors",
+      "Understated material combinations",
+      "Clean lines and balanced proportions",
+      "Functional storage and furniture planning",
+    ],
+    gallery: [
+      "/images/project-08-detail-01.jpg",
+      "/images/project-08-detail-02.jpg",
+      "/images/project-08-detail-03.jpg",
+    ],
+  },
+
+  // "the-botanica-boutique": {
+  //   overview:
+  //     "A contemporary boutique interior inspired by organic forms, natural textures, and an immersive retail experience. The space brings together product presentation and an inviting atmosphere through a thoughtful relationship between architecture and display.",
+  //   concept:
+  //     "The concept takes inspiration from nature, exploring organic shapes, tactile materials, and a subtle connection to greenery. The result is a retail environment that feels fresh, distinctive, and visually engaging.",
+  //   approach:
+  //     "The spatial layout is organised around customer movement, product visibility, and display hierarchy. Natural finishes, considered lighting, and carefully positioned fixtures help create a cohesive shopping experience.",
+  //   highlights: [
+  //     "Organic-inspired design elements",
+  //     "Natural textures and material finishes",
+  //     "Thoughtful product display arrangements",
+  //     "Customer-focused retail circulation",
+  //   ],
+  //   gallery: [
+  //     "/images/project-09-detail-01.jpg",
+  //     "/images/project-09-detail-02.jpg",
+  //     "/images/project-09-detail-03.jpg",
+  //   ],
+  // },
+
+  // "the-nest-residence": {
+  //   overview:
+  //     "A thoughtfully planned family home that combines warm finishes, practical storage, and comfortable everyday spaces. The residence is designed to support the changing needs of family life while maintaining a welcoming contemporary character.",
+  //   concept:
+  //     "The concept explores the feeling of home through warmth, simplicity, and functional design. A contemporary palette, natural textures, and comfortable furnishings create an environment that feels relaxed and personal.",
+  //   approach:
+  //     "The planning focuses on everyday usability, practical storage, and comfortable connections between shared and private spaces. Each room is designed with its own purpose while maintaining a consistent visual language across the residence.",
+  //   highlights: [
+  //     "Family-focused spatial planning",
+  //     "Warm contemporary material palette",
+  //     "Practical integrated storage",
+  //     "Comfortable and connected living spaces",
+  //   ],
+  //   gallery: [
+  //     "/images/project-10-detail-01.jpg",
+  //     "/images/project-10-detail-02.jpg",
+  //     "/images/project-10-detail-03.jpg",
+  //   ],
+  // },
+};
+
 
 interface Testimonial {
   id: number;

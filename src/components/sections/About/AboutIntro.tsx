@@ -184,17 +184,6 @@ export default function AboutIntroSection() {
                   individual visions into environments that inspire and endure.
                 </p>
               </div>
-
-              <div className="mt-10 flex items-center justify-between border-t border-[var(--border-primary)] pt-6">
-                <span className="text-[9px] font-semibold uppercase tracking-[0.17em] text-[var(--text-tertiary)]">
-                  What We Do
-                </span>
-
-                <ArrowUpRight
-                  size={20}
-                  className="text-[var(--color-primary)] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                />
-              </div>
             </article>
 
             {/* Vision */}
@@ -225,17 +214,6 @@ export default function AboutIntroSection() {
                   to make thoughtful design more meaningful to the way people
                   experience life.
                 </p>
-              </div>
-
-              <div className="mt-10 flex items-center justify-between border-t border-white/15 pt-6">
-                <span className="text-[9px] font-semibold uppercase tracking-[0.17em] text-white/40">
-                  Where We Aspire
-                </span>
-
-                <ArrowUpRight
-                  size={20}
-                  className="text-[var(--color-tertiary)] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                />
               </div>
             </article>
           </div>

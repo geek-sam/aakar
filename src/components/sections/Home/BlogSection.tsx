@@ -185,10 +185,10 @@ export default function BlogSection() {
 
       <div className="relative z-10 mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-9">
         {/* Section Header */}
-        <div className="mb-12 grid grid-cols-1 gap-8 lg:mb-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
+        <div className="mb-12 grid grid-cols-1 gap-8 lg:mb-14 lg:grid-cols-[1.2fr_2.8fr] lg:gap-12">
           {/* Section Label */}
-          <div className="flex items-start">
-            <div className="flex items-center gap-2 rounded-full border border-[var(--border-primary)] px-4 py-2">
+          <div className="flex items-start lg:border-r lg:border-[var(--border-primary)]">
+            <div className="flex h-fit items-center gap-2 rounded-full border border-[var(--border-primary)] px-4 py-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" />
 
               <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--text-primary)]">
